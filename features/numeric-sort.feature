@@ -9,7 +9,7 @@ Scenario: Sorting entries with numbers without numeric sort
   \indexentry{term 10}{1}
   \indexentry{term 3}{1}
   """
-  When I successfully run `xindy -M latex -M latex-loc-fmts index.idx`
+  When I successfully run xindy with "index.idx"
   Then the file named "index.ind" should contain:
   # 10 is before 3
   """
@@ -28,7 +28,7 @@ Scenario: Numeric sorting entries with separate numbers
   \indexentry{term 10}{1}
   \indexentry{term 3}{1}
   """
-  When I successfully run `xindy -M latex -M latex-loc-fmts -M numeric-sort index.idx`
+  When I successfully run xindy with "-M numeric-sort index.idx"
   Then the file named "index.ind" should contain:
   """
     % T
@@ -46,7 +46,7 @@ Scenario: Numeric sorting entries with numbers in words
   \indexentry{term10}{1}
   \indexentry{term3}{1}
   """
-  When I successfully run `xindy -I latex -M latex -M latex-loc-fmts -M numeric-sort index.idx`
+  When I successfully run xindy with "-M numeric-sort index.idx"
   Then the file named "index.ind" should contain:
   """
     % T
